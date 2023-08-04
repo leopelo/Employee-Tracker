@@ -18,7 +18,7 @@ VALUES
 -- Inserts employee information into employee table
 INSERT INTO employee (first_name, last_name, roles_id, manager_id)
 VALUES
-  ('Leonela', 'Ludena', 1, 3),
-  ('Joel', 'Nunez', 2, 4),
-  ('Ritchard', 'Ohnmacht', 3, 8),
-  ('Megan', 'Riley', 4, 8);
+  ('Leonela', 'Ludena', 1, 1),
+  ('Joel', 'Nunez', 2, 2),
+  ('Ritchard', 'Ohnmacht', 3, 1),
+  ('Megan', 'Riley', 4, 2);
