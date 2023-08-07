@@ -1,9 +1,5 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const {init} = require('../server');
-
-
-
 const db = mysql.createConnection(
     {
       host: 'localhost',
@@ -17,20 +13,17 @@ const db = mysql.createConnection(
   );
 
 
-   function viewDepartment() {
-    db.query('SELECT * FROM department', function(err, result) {
+  const viewDepartment = () => {
+    return db.query(`SELECT * FROM department`, (err, result) => {
       if (err) {
         throw err
     }else {
-      console.log('Viewing all departments:');
-      console.table(result);
-      
+        console.log("Viewing all departments: ");
+        console.table(result);}
+        
   
-    }
-
-    })
-  };
-
+    });
+      }
 
 
 const addDepartment = () => {
@@ -56,12 +49,10 @@ const addDepartment = () => {
         if (err) {
           throw err
       }else {
-          console.log(`Added ${answers.department} to the database.`)}
+          console.log(`Added ${answers.department} to the database.`)
+        }
      
     });
 })}
 
 module.exports = {viewDepartment, addDepartment};
-  
-
-

@@ -20,6 +20,8 @@ const viewEmployees = () => {
   }else {
         console.log('Viewing all employees:');
         console.table(result);
+       
+
       }
     });
     }
@@ -57,14 +59,17 @@ const addEmployees = () => {
             type: 'list',
             name: 'role',
             message: 'What is the employees role?',
-            choices: () => {
+            choices: role.map((role) => ({name: role.title, value: role.id}) )
+            
+            
+            /*() => {
                 var array = [];
                 for (var i = 0; i < result.length; i++) {
                     array.push(result[i].title);
                 }
                 var newArray = [...new Set(array)];
                 return newArray;
-            }
+            }*/
         },
         {
             type: 'input',
@@ -90,6 +95,7 @@ const addEmployees = () => {
         db.query(sql, [answers.firstName, answers.lastName, role.id, answers.manager], (err, result) => {
             if (err) throw err;
             console.log(`Added ${answers.firstName} ${answers.lastName} to the database.`)
+        
 
 
         });

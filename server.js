@@ -27,43 +27,37 @@ const db = mysql.createConnection(
     type: 'list',
     name: 'prompt',
     message: 'What would you like to do?',
-    choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
+    choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role', 'go back to main menu']
   }
 ]). then (async({prompt}) => {
-    switch (prompt) {
-        case "view all departments":
-             viewDepartment()
-             await init();
-        case "view all roles":
-             viewRoles()
-        case "view all employees":
-            return viewEmployees()
-        case "add a department":
-            return addDepartment()
-        case 'add a role':
-            return addRoles()
-        case 'add an employee':
-            return addEmployees()
-        case 'update an employee role':
-            return updateRoles()
-        default:
-            break;
-        
+   
+    if (prompt === "view all departments") {
+        viewDepartment();
+        setTimeout(employeeTracker, 2000);
+      } else if (prompt === "view all roles") {
+        viewRoles();
+        setTimeout(employeeTracker, 2000);
+      } else if (prompt === "view all employees") {
+        viewEmployees();
+        setTimeout(employeeTracker, 2000);
+      } else if (prompt === "add a department") {
+        addDepartment();
+        setTimeout(employeeTracker, 5000);
+      } else if (prompt === "add a role") {
+        addRoles();
+        setTimeout(employeeTracker, 10000);
+      } else if (prompt === "add an employee") {
+        addEmployees();
+        setTimeout(employeeTracker, 10000);
+      } else if (prompt === "update an employee role") {
+        updateRoles();
+        setTimeout(employeeTracker, 10000);
+      } else {
+        console.log("Please select an option.");
+        employeeTracker();
+      }
     }
-})
-}
-
-
-
-function init() {
-    employeeTracker();
-} 
-
-init();
-
-
-module.exports = {init};
-  //const employeeTracker= () => 
- 
-//results depending on selection
+) ;
+  }
+employeeTracker();
 

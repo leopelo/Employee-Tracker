@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 
+
 const db = mysql.createConnection(
     {
       host: 'localhost',
@@ -19,8 +20,9 @@ const viewRoles = () => {
       throw err
   }else {
       console.log("Viewing all roles: ");
-      console.table(result);}
-
+      console.table(result);
+     
+    }
   });
     }
 
@@ -61,9 +63,10 @@ const addRoles = () => {
                 choices: () => {
                     var array = [];
                     for (var i = 0; i < result.length; i++) {
-                        array.push(result[i].name);
+                        array.push(result[i].dep_name);
                     }
-                    return array;
+                    var newArray = [...new Set(array)];
+                    return newArray;
                 }
             }
         ]).then((answers) => {
@@ -79,6 +82,7 @@ const addRoles = () => {
                 throw err
             }else {
                   console.log(`Added ${answers.role} to the database.`)
+                  
                 }
                
             });
@@ -132,9 +136,12 @@ const updateRoles = () => {
 
         db.query(`UPDATE employee SET ? WHERE ?`, [{role_id: role}, {last_name: name}], (err, result) => {
             if (err){
-              throw err}
-            console.log(`Updated ${answers.employee} role to the database.`)
-            
+              throw err
+        }else {
+            console.log(`Updated ${answers.employee} role to the database.`);
+           
+        }
+           
         }
         );
 });
