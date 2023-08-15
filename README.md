@@ -1,7 +1,7 @@
 # Employee-Tracker
 
 ## Description
-Any business that is run by more than one person requires a method to organize their employees. This application was desgined in order to allow the user to view and manage the departments, roles, and employees in their company so they can organize and plan their business accordingly.
+Any business that is run by more than one person requires a method to organize their employees. This application was designed in order to allow the user to view and manage the departments, roles, and employees in their company so they can organize and plan their business accordingly.
 
 ## Installation
 It is necessary for the user to clone the repository to their own device in order to access it as it is a node.js based application ran from the command line.
